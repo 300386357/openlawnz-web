@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
   branch: feature/cms
+  site_url: https://openlawnz-cms.netlify.com/
+
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
@@ -8,8 +10,10 @@ backend:
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
+publish_mode: editorial_workflow
+
 media_folder: cms/static/img
-public_folder: /img
+# public_folder: /img
 
 collections:
   - name: 'blog'
