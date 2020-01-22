@@ -1,88 +1,125 @@
 backend:
   name: git-gateway
-  branch: feature/cms
+  branch: master
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
 
 media_folder: cms/static/img
 public_folder: /img
 
-# display_url: https://gatsby-netlify-cms-example.netlify.com/
-
 collections:
-  - name: 'meetups'
-    label: 'Meetups'
-    description: 'Meetup dates, location, and presenter information.'
-    folder: 'cms/src/pages/meetups'
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'cms/src/pages/blog'
     create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
       - {
           label: 'Template Key',
           name: 'templateKey',
           widget: 'hidden',
-          default: 'meetup',
+          default: 'blog-post',
         }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime' }
-      - {
-          label: Presenters,
-          name: presenters,
-          required: true,
-          widget: list,
-          fields:
-            [
-              { label: Name, name: name, required: true, widget: string },
-              {
-                label: Presentation Title,
-                name: presentationTitle,
-                required: false,
-                widget: string,
-              },
-              {
-                label: Image,
-                name: image,
-                required: false,
-                hint: "If an image isn't specified, a default headshot placeholder image will be used",
-                widget: image,
-              },
-              { label: Text, name: text, required: true, widget: text },
-              {
-                label: Links,
-                name: links,
-                required: false,
-                widget: list,
-                fields:
-                  [
-                    { label: Text, name: linkText, widget: string },
-                    { label: URL, name: linkURL, widget: string },
-                  ],
-              },
-            ],
-        }
-      - {
-          label: 'Location',
-          name: 'location',
-          required: true,
-          widget: 'object',
-          fields:
-            [
-              { label: 'Name', name: 'name', widget: 'string' },
-              { label: 'Google Maps Link', name: 'mapsLink', widget: 'string' },
-              {
-                label: 'Latitude',
-                name: 'mapsLatitude',
-                widget: 'number',
-                valueType: 'float',
-              },
-              {
-                label: 'Longitude',
-                name: 'mapsLongitude',
-                widget: 'number',
-                valueType: 'float',
-              },
-            ],
-        }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Featured Post', name: 'featuredpost', widget: 'boolean' }
+      - { label: 'Featured Image', name: 'featuredimage', widget: image }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Tags', name: 'tags', widget: 'list' }
+
   - name: 'pages'
     label: 'Pages'
     files:
+      - file: 'cms/src/pages/index.md'
+        label: 'Landing Page'
+        name: 'index'
+        fields:
+          - {
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'index-page',
+            }
+          - { label: Title, name: title, widget: string }
+          - { label: Image, name: image, widget: image }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Subheading, name: subheading, widget: string }
+          - {
+              label: Mainpitch,
+              name: mainpitch,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Description, name: description, widget: text },
+                ],
+            }
+          - { label: Description, name: description, widget: string }
+          - {
+              label: Intro,
+              name: intro,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: text },
+                  {
+                    label: Blurbs,
+                    name: blurbs,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Text, name: text, widget: text },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Main,
+              name: main,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: text },
+                  {
+                    label: Image1,
+                    name: image1,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
+                  {
+                    label: Image2,
+                    name: image2,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
+                  {
+                    label: Image3,
+                    name: image3,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
+                ],
+            }
       - file: 'cms/src/pages/about/index.md'
         label: 'About'
         name: 'about'
@@ -94,311 +131,115 @@ collections:
               default: 'about-page',
             }
           - { label: 'Title', name: 'title', widget: 'string' }
-          - {
-              label: 'Main Image',
-              name: 'mainImage',
-              widget: 'object',
-              fields:
-                [
-                  { label: 'Image', name: 'image', widget: 'image' },
-                  {
-                    label: 'Image Description',
-                    name: 'imageAlt',
-                    widget: 'string',
-                  },
-                ],
-            }
           - { label: 'Body', name: 'body', widget: 'markdown' }
+      - file: 'cms/src/pages/products/index.md'
+        label: 'Products Page'
+        name: 'products'
+        fields:
           - {
-              label: 'Image Gallery',
-              name: 'gallery',
-              widget: 'list',
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'product-page',
+            }
+          - { label: Title, name: title, widget: string }
+          - { label: Image, name: image, widget: image }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Description, name: description, widget: string }
+          - {
+              label: Intro,
+              name: intro,
+              widget: object,
               fields:
                 [
-                  { label: 'Image', name: 'image', widget: 'image' },
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: text },
                   {
-                    label: 'Image Description',
-                    name: 'imageAlt',
-                    widget: 'string',
-                  },
-                ],
-            }
-          - {
-              label: 'Developer Groups',
-              name: 'developerGroups',
-              widget: 'markdown',
-            }
-          - {
-              label: 'Meetup Organizers',
-              name: 'organizers',
-              widget: 'object',
-              fields:
-                [
-                  { label: 'Title', name: 'title', widget: 'string' },
-                  {
-                    label: 'Images',
-                    name: 'gallery',
-                    widget: 'list',
+                    label: Blurbs,
+                    name: blurbs,
+                    widget: list,
                     fields:
                       [
-                        { label: 'Name', name: 'name', widget: 'string' },
-                        { label: 'Image', name: 'image', widget: 'image' },
-                        {
-                          label: 'Image Description',
-                          name: 'imageAlt',
-                          widget: 'string',
-                        },
+                        { label: Image, name: image, widget: image },
+                        { label: Text, name: text, widget: text },
                       ],
                   },
                 ],
             }
           - {
-              label: 'SEO & Meta',
-              name: 'seo',
-              widget: 'object',
+              label: Main,
+              name: main,
+              widget: object,
               fields:
                 [
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: text },
                   {
-                    label: 'Browser Tab Title',
-                    name: 'browserTitle',
-                    widget: 'string',
-                  },
-                  { label: 'Title', name: 'title', widget: 'string' },
-                  {
-                    label: 'Description',
-                    name: 'description',
-                    widget: 'string',
-                  },
-                ],
-            }
-      - file: 'cms/src/pages/pastMeetups/index.md'
-        label: 'Past Meetups'
-        name: 'pastMeetups'
-        fields:
-          - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'past-meetups-page',
-            }
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Body', name: 'body', widget: 'markdown' }
-          - {
-              label: 'SEO & Meta',
-              name: 'seo',
-              widget: 'object',
-              fields:
-                [
-                  {
-                    label: 'Browser Tab Title',
-                    name: 'browserTitle',
-                    widget: 'string',
-                  },
-                  { label: 'Title', name: 'title', widget: 'string' },
-                  {
-                    label: 'Description',
-                    name: 'description',
-                    widget: 'string',
-                  },
-                ],
-            }
-      - file: 'cms/src/pages/home/index.md'
-        label: 'Home'
-        name: 'home'
-        fields:
-          - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'home-page',
-            }
-          - {
-              label: 'Header Image',
-              name: 'headerImage',
-              widget: 'object',
-              fields:
-                [
-                  { label: 'Image', name: 'image', widget: 'image' },
-                  {
-                    label: 'Image Description',
-                    name: 'imageAlt',
-                    widget: 'string',
-                  },
-                ],
-            }
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - {
-              label: 'Upcoming Meetup Heading',
-              name: 'upcomingMeetupHeading',
-              widget: 'string',
-            }
-          - {
-              label: 'No Upcoming Meetup Text',
-              name: 'noUpcomingMeetupText',
-              hint: 'This text will be displayed when there are no upcoming meetups',
-              required: true,
-              widget: 'string',
-            }
-          - {
-              label: 'Maps Note',
-              name: 'mapsNote',
-              required: true,
-              widget: 'string',
-            }
-          - {
-              label: 'Call to Actions',
-              name: 'callToActions',
-              required: true,
-              widget: 'object',
-              fields:
-                [
-                  {
-                    label: 'First CTA',
-                    name: 'firstCTA',
-                    required: true,
-                    widget: 'object',
+                    label: Image1,
+                    name: image1,
+                    widget: object,
                     fields:
                       [
-                        { label: 'Heading', name: 'heading', widget: 'string' },
-                        {
-                          label: 'Sub Heading',
-                          name: 'subHeading',
-                          widget: 'string',
-                        },
-                        {
-                          label: 'Link Type',
-                          name: 'linkType',
-                          widget: 'select',
-                          options: ['internal', 'external'],
-                        },
-                        {
-                          label: 'Link URL',
-                          name: 'linkURL',
-                          widget: 'string',
-                          hint: 'Use a relative URL (e.g. /about) if the link is an internal link.',
-                        },
+                        { label: Image, name: image, widget: image },
+                        { label: Alt, name: alt, widget: string },
                       ],
                   },
                   {
-                    label: 'Second CTA',
-                    name: 'secondCTA',
-                    required: true,
-                    widget: 'object',
+                    label: Image2,
+                    name: image2,
+                    widget: object,
                     fields:
                       [
-                        { label: 'Heading', name: 'heading', widget: 'string' },
-                        {
-                          label: 'Sub Heading',
-                          name: 'subHeading',
-                          widget: 'string',
-                        },
-                        {
-                          label: 'Link Type',
-                          name: 'linkType',
-                          widget: 'select',
-                          options: ['internal', 'external'],
-                        },
-                        {
-                          label: 'Link URL',
-                          name: 'linkURL',
-                          widget: 'string',
-                          hint: 'Use a relative URL (e.g. /about) if the link is an internal link.',
-                        },
+                        { label: Image, name: image, widget: image },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
+                  {
+                    label: Image3,
+                    name: image3,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Alt, name: alt, widget: string },
                       ],
                   },
                 ],
             }
           - {
-              label: 'SEO & Meta',
-              name: 'seo',
-              widget: 'object',
+              label: Testimonials,
+              name: testimonials,
+              widget: list,
               fields:
                 [
-                  {
-                    label: 'Browser Tab Title',
-                    name: 'browserTitle',
-                    widget: 'string',
-                  },
-                  { label: 'Title', name: 'title', widget: 'string' },
-                  {
-                    label: 'Description',
-                    name: 'description',
-                    widget: 'string',
-                  },
+                  { label: Quote, name: quote, widget: string },
+                  { label: Author, name: author, widget: string },
                 ],
             }
-  - name: 'navbarAndFooter'
-    label: 'Navbar & Footer'
-    files:
-      - file: 'cms/src/pages/navbar/index.md'
-        label: 'Navbar'
-        name: 'navbar'
-        fields:
+          - { label: Full_image, name: full_image, widget: image }
           - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'navbar',
-            }
-          - {
-              label: 'Menu Items',
-              name: 'menuItems',
-              widget: 'list',
+              label: Pricing,
+              name: pricing,
+              widget: object,
               fields:
                 [
-                  { label: 'Label', name: 'label', widget: 'string' },
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: string },
                   {
-                    label: 'Link Type',
-                    name: 'linkType',
-                    widget: 'select',
-                    options: ['internal', 'external'],
+                    label: Plans,
+                    name: plans,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Plan, name: plan, widget: string },
+                        { label: Price, name: price, widget: string },
+                        {
+                          label: Description,
+                          name: description,
+                          widget: string,
+                        },
+                        { label: Items, name: items, widget: list },
+                      ],
                   },
-                  {
-                    label: 'Link URL',
-                    name: 'linkURL',
-                    widget: 'string',
-                    hint: 'Use a relative URL (e.g. /about) if the link is an internal link.',
-                  },
-                ],
-            }
-      - file: 'cms/src/pages/footer/index.md'
-        label: 'Footer'
-        name: 'footer'
-        fields:
-          - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'footer',
-            }
-          - {
-              label: 'Logo Image & Tagline',
-              name: 'logoImage',
-              widget: 'object',
-              fields:
-                [
-                  { label: 'Image', name: 'image', widget: 'image' },
-                  {
-                    label: 'Image Description',
-                    name: 'imageAlt',
-                    widget: 'string',
-                  },
-                  { label: 'Tagline', name: 'tagline', widget: 'string' },
-                ],
-            }
-          - {
-              label: 'Social Links',
-              name: 'socialLinks',
-              widget: 'list',
-              fields:
-                [
-                  { label: 'Image', name: 'image', widget: 'image' },
-                  {
-                    label: 'Image Description',
-                    name: 'imageAlt',
-                    widget: 'string',
-                  },
-                  { label: 'Label', name: 'label', widget: 'string' },
-                  { label: 'Link URL', name: 'linkURL', widget: 'string' },
                 ],
             }
