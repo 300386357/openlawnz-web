@@ -1,11 +1,17 @@
+.info-card-container {
+  position: relative;
+  background-size: 50% auto;
+  background: linear-gradient(to bottom, rgba(0,0,0, 0) 50%, white 50%);
+  padding-bottom: 10px;
+}
+
 .info-card {
     @include card-style;
-    @include center;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
     max-width: 320px;
     padding: 30px 20px;
-    top: 0;
     width: 100%;
 
     &--large {
@@ -83,6 +89,10 @@
       h1 {
         margin-bottom: 10px;
       }
+    }
+
+    &--column-nosub {
+      flex-direction: column;
     }
 
     .info-card-unit {

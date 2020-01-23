@@ -4,7 +4,7 @@ import Logo from "-!svg-react-loader?name=Logo!../../img/the-law-foundation-logo
 
 export default function Footer() {
 	return (
-		<div className="footer-container">
+		<footer className="footer-container">
 			<div className="footer-items">
 				<div className="footer-contact-us">
 					<p>Contact Us</p>
@@ -24,6 +24,6 @@ export default function Footer() {
 					</a>
 				</div>
 			</div>
-		</div>
+		</footer>
 	);
 }

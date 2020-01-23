@@ -1,4 +1,6 @@
 # openlawnz-web
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![](https://badgen.net/dependabot/openlawnz/openlawnz-web/117378835=?icon=dependabot)
 
 ## Running
 
@@ -15,17 +17,9 @@ Visit http://localhost:9000/
 
 Please refer to the following Wiki pages:
 
-Overview:
-https://github.com/openlawnz/openlawnz-web/wiki/OpenLawNZ-Website-Overview
-
-Contributing agreement and code of conduct:
-https://github.com/openlawnz/openlawnz-web/blob/master/CONTRIBUTING.md
-
-Workflow:
-https://github.com/openlawnz/openlawnz-web/wiki/Workflow
-
-Build Badge:
-![Build Status](https://codebuild.ap-southeast-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiampFV1NqWkJVQ3NJYTJ2Y25kZmlFK3RtR2kzY3FXWHhVRFZuOG9rY2NmU2ZwZkpqeXdINjJpQWhPRm9PN25vNjVQZDhBU21uM2pvWmVpWE5jUGloRnBvPSIsIml2UGFyYW1ldGVyU3BlYyI6IjAvYzh6eDRzQjFYL0ZoUngiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=staging)
+* [Overview](https://github.com/openlawnz/openlawnz-web/wiki/OpenLawNZ-Website-Overview)
+* [Contributing agreement and code of conduct](https://github.com/openlawnz/openlawnz-web/blob/master/CONTRIBUTING.md)
+* [Workflow](https://github.com/openlawnz/openlawnz-web/wiki/Workflow)
 
 ## NOTICE
 

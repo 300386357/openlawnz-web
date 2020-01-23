@@ -3,7 +3,6 @@ import React from "react";
 import { getNews } from "../../js/ApiNews";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 import NewsContext from "../NewsContext.jsx";
 
 const selectNews = (news = [], id) => news.find(item => item.id === id);
@@ -40,12 +39,14 @@ class News extends React.Component {
 
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<Search history={this.props.history} />
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>{title}</h1>
 						<span>{formattedDate}</span>
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<div className="container main">
 						<div className="content">
 							{imageUrl && (
@@ -63,7 +64,6 @@ class News extends React.Component {
 							/>
 						</div>
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

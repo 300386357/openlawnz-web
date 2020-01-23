@@ -1,7 +1,6 @@
 import React from "react";
 import Search from "../components/Search.jsx";
 import InfoCard from "../components/InfoCard.jsx";
-import Footer from "../components/Footer.jsx";
 
 import Chrome from "-!svg-react-loader?name=Chrome!../../img/chrome.svg";
 
@@ -9,12 +8,14 @@ class Plugin extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
+				<div className="highlighted-content">
+					<Search history={this.props.history} />
 					<InfoCard classModifier="info-card--large info-card--title info-card--column">
 						<h1>Plugins</h1>
 						<span>These plugins are built using the OpenLaw NZ API.</span>
 					</InfoCard>
+				</div>
+				<div className="home-wrapper">
 					<div className="container main">
 						<div className="content">
 							<h2>OpenLaw NZ chrome extension</h2>
@@ -53,13 +54,15 @@ class Plugin extends React.Component {
 										src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromeextension.mp4"
 										type="video/mp4"
 									/>
-									<img src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png" alt="Screenshot of the New Zealand website highlighting the Chrome Extension" />
+									<img
+										src="https://s3-ap-southeast-2.amazonaws.com/assets.openlaw.nz/chromescreenshot1.png"
+										alt="Screenshot of the New Zealand website highlighting the Chrome Extension"
+									/>
 								</video>
 							</p>
 							<p>If you build something with our platform, get in touch and we&apos;ll list it here.</p>
 						</div>
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

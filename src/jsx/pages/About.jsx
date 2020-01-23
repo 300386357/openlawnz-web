@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import InfoCard from "../components/InfoCard.jsx";
 import Search from "../components/Search.jsx";
-import Footer from "../components/Footer.jsx";
+import ReadMore from "../components/ReadMore.jsx";
 import { Link } from "react-router-dom";
 import GenericAvatar from "../../img/about-us/avatar.png";
 import Andy from "../../img/about-us/andrew-easterbrook.png";
@@ -22,17 +22,19 @@ import Benedict from "../../img/about-us/benedict-stewart.png";
 import Daryl from "../../img/about-us/daryl-diesto.png";
 import Emma from "../../img/about-us/emma-burke.png";
 import Infra from "../../img/about-us/openlaw-infrastructure.png";
+import Nicolas from "../../img/about-us/Nicolas-zhou.png";
 
 class About extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Search history={this.props.history} />
-				<div className="home-wrapper">
-					<InfoCard classModifier="info-card--large info-card--title info-card--column">
-						<h1 className="no-margin">About Us</h1>
+				<div className="highlighted-content">
+					<Search history={this.props.history} />
+					<InfoCard classModifier="info-card--large info-card--title info-card--column-nosub">
+						<h1>About Us</h1>
 					</InfoCard>
-
+				</div>
+				<div className="home-wrapper">
 					<div className="container main">
 						<div className="content">
 							<h2>What we do</h2>
@@ -66,9 +68,9 @@ class About extends Component {
 										</a>
 									</div>
 								</div>
-								<div aria-hidden="true" id="infrastructure" className="modal-window" role="dialog">
+								<div aria-hidden="true" id="infrastructure" className="modal-window">
 									<div>
-										<a href="#" title="Close" className="modal-close" role="button" aria-modal="true">
+										<a href="#" title="Close" className="modal-close">
 											Close
 										</a>
 										<img src={Infra} alt="Infrastructure" />
@@ -82,7 +84,8 @@ class About extends Component {
 							</p>
 							<p>
 								Our volunteers receive real-world experience in react, node.js, python and a range of
-								other technologies. If you’d like to get involved, drop us a line <a href="mailto:enquiries@openlaw.nz">here</a>.
+								other technologies. If you’d like to get involved, drop us a line{" "}
+								<a href="mailto:enquiries@openlaw.nz">here</a>.
 							</p>
 
 							<hr className="divider" />
@@ -96,9 +99,9 @@ class About extends Component {
 									<p>
 										Andrew is a lawyer, and has worked in technology law, civil litigation and
 										family law since 2009. He has been a Member of the Auckland District Law Society
-										Technology &amp; Law Committee since 2012, and is experienced in web and software
-										development. Andrew went to university at Victoria, Wellington, and now lives in
-										Whangarei.
+										Technology &amp; Law Committee since 2012, and is experienced in web and
+										software development. Andrew went to university at Victoria, Wellington, and now
+										lives in Whangarei.
 									</p>
 								</div>
 								<div className="card-item">
@@ -123,11 +126,13 @@ class About extends Component {
 										<img src={GenericAvatar} alt="Blaine Western" />
 										<strong>Blaine Western</strong>
 									</div>
-									<p>
-										Lead web developer - Blaine is a programmer and developer with a background in
-										the visual arts. He is passionate about developing web technologies that strive
-										towards social justice and equality.
-									</p>
+									<ReadMore
+										text="
+									Lead web developer - Blaine is a programmer and developer with a background in
+									the visual arts. He is passionate about developing web technologies that strive
+									towards social justice and equality.
+									"
+									/>
 								</div>
 
 								<div className="card-item-small">
@@ -135,7 +140,11 @@ class About extends Component {
 										<img src={Tian} alt="Tian Bai" />
 										<strong>Tian Bai</strong>
 									</div>
-									<p>A passionate Software Developer who graduated with a major in Computer Science and Statistics from Victoria University of Wellington.</p>
+									<ReadMore
+										text="
+									A passionate Software Developer who graduated with a major in Computer Science and Statistics from Victoria University of Wellington.
+									"
+									/>
 								</div>
 							</div>
 							<div className="cards-list">
@@ -144,10 +153,12 @@ class About extends Component {
 										<img src={Caio} alt="Caio Nunes" />
 										<strong>Caio Nunes</strong>
 									</div>
-									<p>
-										Caio is a Front End Developer who decided to give something back to New
-										Zealand&apos;s community after living in Auckland.
-									</p>
+									<ReadMore
+										text="
+									Caio is a Front End Developer who decided to give something back to New
+									Zealand's community after living in Auckland.
+									"
+									/>
 								</div>
 
 								<div className="card-item-small">
@@ -164,32 +175,37 @@ class About extends Component {
 										<img src={AlexH} alt="Alex Huang" />
 										<strong>Alex Huang</strong>
 									</div>
-									<p>
-										Alex is a web developer with a passion to create cool apps to change
-										people&apos;s life.
-									</p>
+									<ReadMore
+										text="
+									Alex is a web developer with a passion to create cool apps to change
+									people's life.
+									"
+									/>
 								</div>
 								<div className="card-item-small">
 									<div>
 										<img src={Chanil} alt="Chanil Park" />
 										<strong>Chanil Park</strong>
 									</div>
-									<p>
-										Chanil is a developer who has completed a Computer Science Major at Victoria
-										University of Wellington. He has volunteered to obtain more development
-										experience and to use his skills to help  New Zealand's community.
-									</p>
+									<ReadMore
+										text="
+									Chanil is a Software Developer who has completed Computer Science at Victoria University of Wellington.
+									He is participating in web development and machine learning at OpenLaw NZ.
+									"
+									/>
 								</div>
 							</div>
 							<div className="cards-list">
 								<div className="card-item-small">
 									<div>
-										<img src={Daryl} alt="Daryl Diesto" />
-										<strong>Daryl Diesto</strong>
+										<img src={Nicolas} alt="Nicolas Zhou" />
+										<strong>Nicolas Zhou</strong>
 									</div>
-									<p>
-									Daryl is a business data analyst who is keen to learn more about data, equipped with experience and innovative ideas. A leader, a follower and passionate about data.
-									</p>
+									<ReadMore
+										text="
+									Nicolas is an outstanding developer who has more than 5 years of experience in web development space. He is a highly self-motivated person who strives for the best result and uses his experience and creativity to help us reach the goals, to meet and exceed expectations.
+									"
+									/>
 								</div>
 							</div>
 							<h3>API</h3>
@@ -199,23 +215,27 @@ class About extends Component {
 										<img src={Noel} alt="Noel Soong" />
 										<strong>Noel Soong</strong>
 									</div>
-									<p>
-										Noel is a full stack developer hungry to expand his knowledge for the whole
-										technology stack. He helped develop, deploy and maintain the GraphQL api. He has also
-										worked on the documentation on Github. Graduated from the University of
-										Canterbury and Dev Academy.
-									</p>
+									<ReadMore
+										text="
+									Noel is a full stack developer hungry to expand his knowledge for the whole
+									technology stack. He helped develop, deploy and maintain the GraphQL api. He has also
+									worked on the documentation on Github. Graduated from the University of
+									Canterbury and Dev Academy.
+									"
+									/>
 								</div>
 								<div className="card-item-small">
 									<div>
 										<img src={Hanbyul} alt="Hanbyul Son" />
 										<strong>Hanbyul Son</strong>
 									</div>
-									<p>
-										Hanbyul is a mission-driven developer who always looks for opportunities to gain
-										more in-depth software development knowledge, and turn it into innovative
-										solutions to support communities.
-									</p>
+									<ReadMore
+										text="
+									Hanbyul is a mission-driven developer who always looks for opportunities to gain
+									more in-depth software development knowledge, and turn it into innovative
+									solutions to support communities.
+									"
+									/>
 								</div>
 							</div>
 
@@ -226,24 +246,21 @@ class About extends Component {
 										<img src={AlexC} alt="Alex Chan" />
 										<strong>Alex Chan</strong>
 									</div>
-									<p>
-										Alex has more than 10 years of experience in the IT industry covering software
-										development, project management and operational support. He is also a Certified
-										Project Manager and ScrumMaster, and hold other qualifications related to data
-										analytics and business.
-									</p>
+									<ReadMore
+										text="
+									Alex has more than 10 years of experience in the IT industry covering software
+									development, project management and operational support. He is also a Certified
+									Project Manager and ScrumMaster, and hold other qualifications related to data
+									analytics and business.
+									"
+									/>
 								</div>
 								<div className="card-item-small">
 									<div>
 										<img src={Limei} alt="Limei" />
 										<strong>Limei</strong>
 									</div>
-									<p>
-										Limei is a skilled DevOps Engineer with in-depth professional experience with
-										several major corporations in China. In order to experience different life, she
-										came to New Zealand to study, work and live. She lives in Auckland with her
-										family.
-									</p>
+									<ReadMore text="Limei is a skilled DevOps Engineer with in-depth professional experience with several major corporations in China. In order to experience different life, she came to New Zealand to study, work and live. She lives in Auckland with her family." />
 								</div>
 							</div>
 
@@ -256,8 +273,18 @@ class About extends Component {
 									</div>
 									<p></p>
 								</div>
+								<div className="card-item-small">
+									<div>
+										<img src={Daryl} alt="Daryl Diesto" />
+										<strong>Daryl Diesto</strong>
+									</div>
+									<ReadMore
+										text="
+									Daryl is a business data analyst who is keen to learn more about data, equipped with experience and innovative ideas. A leader, a follower and passionate about data.
+									"
+									/>
+								</div>
 							</div>
-
 							<h3>Design</h3>
 							<div className="cards-list">
 								<div className="card-item-small">
@@ -275,10 +302,7 @@ class About extends Component {
 										<img src={Lina} alt="Lina Xie" />
 										<strong>Lina Xie</strong>
 									</div>
-									<p>
-										Lina is enthusiastic when it comes to web/graphic design. She likes taking on
-										challenges and pursues the production of good results for end users.
-									</p>
+									<ReadMore text="Lina is enthusiastic when it comes to web/graphic design. She likes taking on challenges and pursues the production of good results for end users." />
 								</div>
 							</div>
 
@@ -289,12 +313,14 @@ class About extends Component {
 										<img src={David} alt="David Paitai" />
 										<strong>David Paitai</strong>
 									</div>
-									<p>
-										David is a Community Advisor for Te Tari Taiwhenua (Internal Affairs) providing
-										advisory services for whānau, hapū, iwi, communities and community
-										organisations. He&apos;s also a volunteer fire fighter, marae trustee and as a
-										self-professed accounting geek.
-									</p>
+									<ReadMore
+										text="
+									David is a Community Advisor for Te Tari Taiwhenua (Internal Affairs) providing
+									advisory services for whānau, hapū, iwi, communities and community
+									organisations. He's also a volunteer fire fighter, marae trustee and as a
+									self-professed accounting geek.
+									"
+									/>
 								</div>
 							</div>
 							<h3>Legal</h3>
@@ -304,22 +330,26 @@ class About extends Component {
 										<img src={Benedict} alt="Benedict Stewart" />
 										<strong>Benedict Stewart</strong>
 									</div>
-									<p>
-										Benedict leads product &amp; growth strategy at Dacreed, a regtech startup based
-										in Auckland. Previously a lawyer at Chapman Tripp, Benedict leverages his deep
-										domain expertise to solve customer problems. Benedict holds a BA/LLB(Hons) from
-										the University of Auckland.
-									</p>
+									<ReadMore
+										text="
+									Benedict leads product &amp; growth strategy at Dacreed, a regtech startup based
+									in Auckland. Previously a lawyer at Chapman Tripp, Benedict leverages his deep
+									domain expertise to solve customer problems. Benedict holds a BA/LLB(Hons) from
+									the University of Auckland.
+									"
+									/>
 								</div>
 								<div className="card-item-small">
 									<div>
 										<img src={Emma} alt="Emma Burke" />
 										<strong>Emma Burke</strong>
 									</div>
-									<p>
-										Emma has a background in law and botany. She has worked in general practice,
-										primarily in property for two years.
-									</p>
+									<ReadMore
+										text="
+									Emma has a background in law and botany. She has worked in general practice,
+									primarily in property for two years.
+									"
+									/>
 								</div>
 							</div>
 							<div className="cards-list">
@@ -328,16 +358,17 @@ class About extends Component {
 										<img src={GenericAvatar} alt="Alex McNichol" />
 										<strong>Alex McNichol</strong>
 									</div>
-									<p>
-										Alex is a Law and Commerce student in his penultimate year at the University of
-										Canterbury. He is passionate about using and developing his legal skills for the
-										purpose of helping others.
-									</p>
+									<ReadMore
+										text="
+									Alex is a Law and Commerce student in his penultimate year at the University of
+									Canterbury. He is passionate about using and developing his legal skills for the
+									purpose of helping others.
+									"
+									/>
 								</div>
 							</div>
 						</div>
 					</div>
-					<Footer />
 				</div>
 			</React.Fragment>
 		);

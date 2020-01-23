@@ -109,11 +109,6 @@ li {
   max-width: 80%;
 }
 
-.content-wrapper {
-  position: relative;
-  margin-top: 170px;
-}
-
 .container {
   width: 100%;
   padding-right: 15px;
@@ -147,11 +142,21 @@ li {
   margin-bottom: 20px;
 }
 
+.highlighted-content {
+  background: url(../img/open-law-background.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: top;
+  padding-top: 90px;
+}
+
 .home-wrapper {
   position: relative;
   width: 100%;
   background: $openWhite;
-  padding-top: 167px;
+  padding-top: 60px;
 }
 
 .border {
@@ -210,7 +215,7 @@ li {
   }
 
   .contact-us-button {
-    
+
     a {
       display: inline-block;
       @include button-style;
@@ -262,6 +267,10 @@ li {
       margin-bottom: 0;
     }
   }
+
+  .highlighted-content {
+    padding-top: 140px;
+  }
 }
 
 @keyframes spin {
@@ -293,16 +302,6 @@ li {
   text-align: center;
   margin: 0;
   padding: 5vh 10vw 0;
-}
-
-.route-transition-enter {
-  opacity: 0;
-  z-index: 1;
-}
-
-.route-transition-enter.route-transition-enter-active {
-  opacity: 1;
-  transition: opacity 10ms ease-in;
 }
 
 @import "./Nav.scss";
